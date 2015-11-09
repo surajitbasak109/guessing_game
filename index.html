@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Guessing Game</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <h1>Guessing Game</h1>
+    </div>
+  </header>
+
+  <main class="main">
+    <div class="container">
+      <div class="content">
+        <div class="userInputStatus">You typed : <span id="userInput">None</span></div>
+        <label for="userInput">I am thinking of a number in the range 1 to 50. What is the number?</label>
+        <input type="text" name="userInput" id="userInputValue" onkeyup="get_input(this.value);" autofocus>
+        <input type="button" value="Guess!" id="guess" onclick="do_guess()">
+        <div class="status" id="status">Feedback: Click Guess button to play the game!</div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">&copy; Guessing Game - Created By <a href="#">You</a></div>
+  </footer>
+  <script src="function.js"></script>
+</body>
+</html>
