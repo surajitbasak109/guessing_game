@@ -266,52 +266,68 @@ input[type=button]:hover {
 
 Inside the directory create a file called **function.js** and paste below code.
 
-<pre>var target,
-  guess_input_text,
-  guess_input,
-  finished = false,
-  guesses = 0,
-  target = Math.floor( Math.random() * 50 ) + 1;
+<pre>// Initial variables
+var guess_input_text,        // user input
+  guess_input,               // modified user input
+  finished = false,          // a finished variable with false value 
+// to be used in if statement
+  guesses = 0,               // guesses variable to be count.
+// Initial value is zero
+  target = Math.floor( Math.random() * 50 ) + 1; // our target variable
+// which will be our guessing number
 
-function get_input( showValue ) {
-  document.getElementById( 'userInput' ).innerHTML = showValue;
-  guess_input_text = showValue;
+function get_input( showValue ) { // a function with showValue parameter 
+// to get user input from the text input
+  document.getElementById( 'userInput' ).innerHTML = showValue; // showing the typed value
+//in userInput div element
+  guess_input_text = showValue;  // stores input value in 
+//guess_input_text variable
 }
 
-function do_guess() {
+function do_guess() { // this function will be used to process the guessing game
   
-  if( !finished ){
-    guess_input = parseInt( guess_input_text );
-    guesses++;
-    document.getElementById( "userInputValue" ).focus();
-    finished = check_guess();
+  if( !finished ){ // it checks if finished variable contains true or false value
+    guess_input = parseInt( guess_input_text ); // it checks if the user input
+// is an integer or a string
+    guesses++; // increases the value of guesses variable from 0 like 1, 2, 3, ...
+    document.getElementById( "userInputValue" ).focus(); // If user input is false
+// then it will autofocus again in input text field
+    finished = check_guess(); // now finished variable stores a new function
+// check_guess
   }
 
 }
 
+// This function checks if the user input is invalid
 function check_guess() {
-  var status = document.getElementById( 'status' );
+  var status = document.getElementById( 'status' ); // a local variable to identifies
+// the div element with status id
 
-  if ( isNaN( guess_input ) ) {
+  if ( isNaN( guess_input ) ) { // it checks if the given user input is a number
     status.innerHTML = '&lt;span class="error animated shake"&gt;You have not entered a number. Please enter a number in the range 1 to 50.&lt;/span&gt;' ;
-    return false;
+    return false; // if the given input is not a number it gives a feedback to the user and returns false value
   }
 
-  if( guess_input &lt; 1 || guess_input &gt; 50 ){
+  if( guess_input &lt; 1 || guess_input &gt; 50 ){ // it checks if the given user input is
+// less than one or greater than 50
     status.innerHTML = '&lt;span class="error animated shake"&gt;Please enter a number in the range 1 to 50.&lt;/span&gt;';
-    return false;
+    return false; // if it fails then it gives feedback to the
+// user and returns false value
   }
 
-  if ( guess_input &lt; target ) {
+  if ( guess_input &lt; target ) { // now it checks if the user input is less than target 
+// variable, if it fails then it returns false value gives feedback to the user
     status.innerHTML = '&lt;span class="error animated shake"&gt;Your number is too small!&lt;/span&gt;';
     return false;
   }
 
-  if( guess_input &gt; target ){
+  if( guess_input &gt; target ){// now it checks if the user input is greater than
+// target variable, if it fails then it returns false value gives feedback to the user
     status.innerHTML = '&lt;span class="error animated shake"&gt;Your number is too large!&lt;/span&gt;';
     return false;
   }
 
+// now it passed all validation, it shows a congratulate message to the user and also shows how many guesses user tried with the guessing number
   status.innerHTML = "&lt;span class=\"success animated bounce\"&gt;You got it! The number was " + target + " . It took you " + guesses + " guesses to get the number!&lt;/span&gt;";
   return true;
 
