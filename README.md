@@ -3,49 +3,38 @@
 
 Make a new directory in your local storage called _**guessing-game**_ and create **index.html** inside the directory. You can place below html markup in your newly created html file,
 
-<pre>
+<pre>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;title&gt;Guessing Game&lt;/title&gt;
+  &lt;link rel="stylesheet" href="style.css"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;header class="header"&gt;
+    &lt;div class="container"&gt;
+      &lt;h1&gt;Guessing Game&lt;/h1&gt;
+    &lt;/div&gt;
+  &lt;/header&gt;
 
-  <meta charset="UTF-8">
-  <title>Guessing Game</title>
-  <link rel="stylesheet" href="style.css">
+  &lt;main class="main"&gt;
+    &lt;div class="container"&gt;
+      &lt;div class="content"&gt;
+        &lt;div class="userInputStatus"&gt;You typed : &lt;span id="userInput"&gt;None&lt;/span&gt;&lt;/div&gt;
+        &lt;label for="userInput"&gt;I am thinking of a number in the range 1 to 50. What is the number?&lt;/label&gt;
+        &lt;input type="text" name="userInput" id="userInputValue" onkeyup="get_input(this.value);" autofocus&gt;
+        &lt;input type="button" value="Guess!" id="guess" onclick="do_guess()"&gt;
+        &lt;div class="status" id="status"&gt;Feedback: Click Guess button to play the game!&lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/main&gt;
 
-<header class="header">
-
-<div class="container">
-
-# Guessing Game
-
-    </div>
-
-  </header>
-
-<main class="main">
-
-<div class="container">
-
-<div class="content">
-
-<div class="userInputStatus">You typed : <span id="userInput">None</span></div>
-
-        <label for="userInput">I am thinking of a number in the range 1 to 50\. What is the number?</label>
-        <input type="text" name="userInput" id="userInputValue" onkeyup="get_input(this.value);" autofocus="">
-        <input type="button" value="Guess!" id="guess" onclick="do_guess()">
-
-<div class="status" id="status">Feedback: Click Guess button to play the game!</div>
-
-      </div>
-
-    </div>
-
-  </main>
-
-<footer class="footer">
-
-<div class="container">© Guessing Game - Created By [You](#)</div>
-
-  </footer>
-
-</pre>
+  &lt;footer class="footer"&gt;
+    &lt;div class="container"&gt;&copy; Guessing Game - Created By &lt;a href="#"&gt;You&lt;/a&gt;&lt;/div&gt;
+  &lt;/footer&gt;
+  &lt;script src="function.js"&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre>
 
 We added external stylesheet inside the head tag and after the title element. Also we added external script tag before the end body tag. We added header, main, footer semantic tag for html5\. It is not required, but for the visual effect we made this. Inside the content class element we made two input element, one is a text input and another is button input element. You will see we made a div tag with `userInputStatus` id. When user start typing in text input element it will update user input. I made a label element to show the question to the user. If yo carefully read all attributes of that text input element you will notice that I gave two new attribute which need to be explained here. First one is `onkeyup="get_input(this.value)"`. Well `onkeyup` is an event handler when user start typing it will then call a function. And the function is `get_input(this.value)`. I provided `this.value` parameter in `get_input` function as because whenever anything is typed in the text input element it stores the input value. When you reading this tutorial a question will appear in your mind _What is event handler?_ Here is a quote from www.webopedia.com/:
 
