@@ -1,5 +1,5 @@
 # Guessing Game Tutorial #
-Last Update on: 23.11.2016 11:22:04
+**Last Update on: 23.11.2016 11:22:04**
 ## Step 1: Make an HTML file
 
 Make a new directory in your local storage called _**guessing-game**_ and create **index.html** inside the directory. You can place below html markup in your newly created html file,
