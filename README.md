@@ -2,40 +2,44 @@
 **Last Update on: 23.11.2016 11:22:04**
 ## Step 1: Make an HTML file
 
+![Image of Yaktocat](guessing_game_ss.png)
+
 Make a new directory in your local storage called _**guessing-game**_ and create **index.html** inside the directory. You can place below html markup in your newly created html file,
 
-<pre>&lt;!DOCTYPE html&gt;
-&lt;html lang="en"&gt;
-&lt;head&gt;
-  &lt;meta charset="UTF-8"&gt;
-  &lt;title&gt;Guessing Game&lt;/title&gt;
-  &lt;link rel="stylesheet" href="style.css"&gt;
-&lt;/head&gt;
-&lt;body&gt;
-  &lt;header class="header"&gt;
-    &lt;div class="container"&gt;
-      &lt;h1&gt;Guessing Game&lt;/h1&gt;
-    &lt;/div&gt;
-  &lt;/header&gt;
+```
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Guessing Game</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <h1>Guessing Game</h1>
+    </div>
+  </header>
 
-  &lt;main class="main"&gt;
-    &lt;div class="container"&gt;
-      &lt;div class="content"&gt;
-        &lt;div class="userInputStatus"&gt;You typed : &lt;span id="userInput"&gt;None&lt;/span&gt;&lt;/div&gt;
-        &lt;label for="userInput"&gt;I am thinking of a number in the range 1 to 50. What is the number?&lt;/label&gt;
-        &lt;input type="text" name="userInput" id="userInputValue" onkeyup="get_input(this.value);" autofocus&gt;
-        &lt;input type="button" value="Guess!" id="guess" onclick="do_guess()"&gt;
-        &lt;div class="status" id="status"&gt;Feedback: Click Guess button to play the game!&lt;/div&gt;
-      &lt;/div&gt;
-    &lt;/div&gt;
-  &lt;/main&gt;
+  <main class="main">
+    <div class="container">
+      <div class="content">
+        <div class="userInputStatus">You typed : <span id="userInput">None</span></div>
+        <label for="userInput">I am thinking of a number in the range 1 to 50. What is the number?</label>
+        <input type="text" name="userInput" id="userInputValue" onkeyup="get_input(this.value);" autofocus>
+        <input type="button" value="Guess!" id="guess" onclick="do_guess()">
+        <div class="status" id="status">Feedback: Click Guess button to play the game!</div>
+      </div>
+    </div>
+  </main>
 
-  &lt;footer class="footer"&gt;
-    &lt;div class="container"&gt;&copy; Guessing Game - Created By &lt;a href="#"&gt;You&lt;/a&gt;&lt;/div&gt;
-  &lt;/footer&gt;
-  &lt;script src="function.js"&gt;&lt;/script&gt;
-&lt;/body&gt;
-&lt;/html&gt;</pre>
+  <footer class="footer">
+    <div class="container">&copy; Guessing Game - Created By <a href="#">You</a></div>
+  </footer>
+  <script src="function.js"></script>
+</body>
+</html>
+```
 
 We added external stylesheet inside the head tag and after the title element. Also we added external script tag before the end body tag. We added header, main, footer semantic tag for html5\. It is not required, but for the visual effect we made this. Inside the content class element we made two input element, one is a text input and another is button input element. You will see we made a div tag with `userInputStatus` id. When user start typing in text input element it will update user input. I made a label element to show the question to the user. If yo carefully read all attributes of that text input element you will notice that I gave two new attribute which need to be explained here. First one is `onkeyup="get_input(this.value)"`. Well `onkeyup` is an event handler when user start typing it will then call a function. And the function is `get_input(this.value)`. I provided `this.value` parameter in `get_input` function as because whenever anything is typed in the text input element it stores the input value. When you reading this tutorial a question will appear in your mind _What is event handler?_ Here is a quote from www.webopedia.com/:
 
@@ -64,8 +68,8 @@ We provided another event handler on button input element which is `onclick="do_
 ## Step 2: Making a external styelesheet file for visual effect
 
 Now make a **style.css** file inside the directory and paste below code in the file.
-
-<pre>body {
+```
+body {
   font-family: Arial, Helvetica, sans-serif;
   font-size: 14px;
   background: #dedede;
@@ -261,13 +265,15 @@ input[type=button]:hover {
 .bounce {
     -webkit-animation-name: bounce;
     animation-name: bounce;
-}</pre>
+}
+```
 
 ## Step 3: Make a new javascript file for content behavior
 
 Inside the directory create a file called **function.js** and paste below code.
 
-<pre>// Initial variables
+```
+// Initial variables
 var guess_input_text,        // user input
   guess_input,               // modified user input
   finished = false,          // a finished variable with false value
@@ -305,33 +311,34 @@ function check_guess() {
 // the div element with status id
 
   if ( isNaN( guess_input ) ) { // it checks if the given user input is a number
-    status.innerHTML = '&lt;span class="error animated shake"&gt;You have not entered a number. Please enter a number in the range 1 to 50.&lt;/span&gt;' ;
+    status.innerHTML = '<span class="error animated shake">You have not entered a number. Please enter a number in the range 1 to 50.</span>' ;
     return false; // if the given input is not a number it gives a feedback to the user and returns false value
   }
 
-  if( guess_input &lt; 1 || guess_input &gt; 50 ){ // it checks if the given user input is
+  if( guess_input < 1 || guess_input > 50 ){ // it checks if the given user input is
 // less than one or greater than 50
-    status.innerHTML = '&lt;span class="error animated shake"&gt;Please enter a number in the range 1 to 50.&lt;/span&gt;';
+    status.innerHTML = '<span class="error animated shake">Please enter a number in the range 1 to 50.</span>';
     return false; // if it fails then it gives feedback to the
 // user and returns false value
   }
 
-  if ( guess_input &lt; target ) { // now it checks if the user input is less than target
+  if ( guess_input < target ) { // now it checks if the user input is less than target
 // variable, if it fails then it returns false value gives feedback to the user
-    status.innerHTML = '&lt;span class="error animated shake"&gt;Your number is too small!&lt;/span&gt;';
+    status.innerHTML = '<span class="error animated shake">Your number is too small!</span>';
     return false;
   }
 
-  if( guess_input &gt; target ){// now it checks if the user input is greater than
+  if( guess_input > target ){// now it checks if the user input is greater than
 // target variable, if it fails then it returns false value gives feedback to the user
-    status.innerHTML = '&lt;span class="error animated shake"&gt;Your number is too large!&lt;/span&gt;';
+    status.innerHTML = '<span class="error animated shake">Your number is too large!</span>';
     return false;
   }
 
 // now it passed all validation, it shows a congratulate message to the user and also shows how many guesses user tried with the guessing number
-  status.innerHTML = "&lt;span class=\"success animated bounce\"&gt;You got it! The number was " + target + " . It took you " + guesses + " guesses to get the number!&lt;/span&gt;";
+  status.innerHTML = "<span class=\"success animated bounce\">You got it! The number was " + target + " . It took you " + guesses + " guesses to get the number!</span>";
   return true;
 
-}</pre>
+}
+```
 
 Explanation given in the script itself.
