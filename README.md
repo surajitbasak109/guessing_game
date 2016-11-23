@@ -1,4 +1,5 @@
 # Guessing Game Tutorial #
+Last Update on: 23.11.2016 11:22:04
 ## Step 1: Make an HTML file
 
 Make a new directory in your local storage called _**guessing-game**_ and create **index.html** inside the directory. You can place below html markup in your newly created html file,
@@ -221,45 +222,45 @@ input[type=button]:hover {
   color: #017701;
 }
 
-.animated { 
-    -webkit-animation-duration: 0.5s; 
-    animation-duration: 0.5s; 
-    -webkit-animation-fill-mode: both; 
-    animation-fill-mode: both; 
-    -webkit-animation-timing-function: linear; 
-    animation-timing-function: linear; 
-} 
-
-@-webkit-keyframes shake { 
-    0%, 100% {-webkit-transform: translateX(0);} 
-    10%, 30%, 50%, 70%, 90% {-webkit-transform: translateX(-10px);} 
-    20%, 40%, 60%, 80% {-webkit-transform: translateX(10px);} 
-} 
-@keyframes shake { 
-    0%, 100% {transform: translateX(0);} 
-    10%, 30%, 50%, 70%, 90% {transform: translateX(-10px);} 
-    20%, 40%, 60%, 80% {transform: translateX(10px);} 
-} 
-.shake { 
-    -webkit-animation-name: shake; 
-    animation-name: shake; 
+.animated {
+    -webkit-animation-duration: 0.5s;
+    animation-duration: 0.5s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+    -webkit-animation-timing-function: linear;
+    animation-timing-function: linear;
 }
 
-@-webkit-keyframes bounce { 
-    0%, 20%, 50%, 80%, 100% {-webkit-transform: translateY(0);} 
-    40% {-webkit-transform: translateY(-30px);} 
-    60% {-webkit-transform: translateY(-15px);} 
-} 
+@-webkit-keyframes shake {
+    0%, 100% {-webkit-transform: translateX(0);}
+    10%, 30%, 50%, 70%, 90% {-webkit-transform: translateX(-10px);}
+    20%, 40%, 60%, 80% {-webkit-transform: translateX(10px);}
+}
+@keyframes shake {
+    0%, 100% {transform: translateX(0);}
+    10%, 30%, 50%, 70%, 90% {transform: translateX(-10px);}
+    20%, 40%, 60%, 80% {transform: translateX(10px);}
+}
+.shake {
+    -webkit-animation-name: shake;
+    animation-name: shake;
+}
 
-@keyframes bounce { 
-    0%, 20%, 50%, 80%, 100% {transform: translateY(0);} 
-    40% {transform: translateY(-30px);} 
-    60% {transform: translateY(-15px);} 
-} 
+@-webkit-keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {-webkit-transform: translateY(0);}
+    40% {-webkit-transform: translateY(-30px);}
+    60% {-webkit-transform: translateY(-15px);}
+}
 
-.bounce { 
-    -webkit-animation-name: bounce; 
-    animation-name: bounce; 
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+    40% {transform: translateY(-30px);}
+    60% {transform: translateY(-15px);}
+}
+
+.bounce {
+    -webkit-animation-name: bounce;
+    animation-name: bounce;
 }</pre>
 
 ## Step 3: Make a new javascript file for content behavior
@@ -269,23 +270,23 @@ Inside the directory create a file called **function.js** and paste below code.
 <pre>// Initial variables
 var guess_input_text,        // user input
   guess_input,               // modified user input
-  finished = false,          // a finished variable with false value 
+  finished = false,          // a finished variable with false value
 // to be used in if statement
   guesses = 0,               // guesses variable to be count.
 // Initial value is zero
   target = Math.floor( Math.random() * 50 ) + 1; // our target variable
 // which will be our guessing number
 
-function get_input( showValue ) { // a function with showValue parameter 
+function get_input( showValue ) { // a function with showValue parameter
 // to get user input from the text input
   document.getElementById( 'userInput' ).innerHTML = showValue; // showing the typed value
 //in userInput div element
-  guess_input_text = showValue;  // stores input value in 
+  guess_input_text = showValue;  // stores input value in
 //guess_input_text variable
 }
 
 function do_guess() { // this function will be used to process the guessing game
-  
+
   if( !finished ){ // it checks if finished variable contains true or false value
     guess_input = parseInt( guess_input_text ); // it checks if the user input
 // is an integer or a string
@@ -315,7 +316,7 @@ function check_guess() {
 // user and returns false value
   }
 
-  if ( guess_input &lt; target ) { // now it checks if the user input is less than target 
+  if ( guess_input &lt; target ) { // now it checks if the user input is less than target
 // variable, if it fails then it returns false value gives feedback to the user
     status.innerHTML = '&lt;span class="error animated shake"&gt;Your number is too small!&lt;/span&gt;';
     return false;
